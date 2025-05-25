@@ -1,5 +1,5 @@
 [build-system]
-requires = ["poetry-core", "ziggy-pydust==0.23.2"]
+requires = ["poetry-core", "ziggy-pydust==0.25.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
@@ -8,11 +8,10 @@ version = "0.1.0"
 description = ""
 authors = ["Fulcrum Inc. <hello@fulcrum.so>"]
 readme = "README.md"
-packages = [{ include = "fibonacci" }]
+packages = [{ include = "sandbox" }]
 include = [
     { path = "src/", format = "sdist" },
-    { path = "fibonacci/*.so", format = "wheel" },
-    "fibonacci/*.pyi"
+    { path = "sandbox/*.so", format = "wheel" },
 ]
 
 [tool.poetry.build]
@@ -22,7 +21,7 @@ script = "build.py"
 python = "^3.11"
 
 [tool.poetry.group.dev.dependencies]
-ziggy-pydust = "0.23.2"
+ziggy-pydust = "0.25"
 pytest = "^8.0.0"
 ruff = "^0.4.0"
 black = "^23.7.0"
@@ -35,5 +34,5 @@ line-length = 120
 select = ["F", "E", "W", "UP", "I001", "I002"]
 
 [[tool.pydust.ext_module]]
-name = "fibonacci._lib"
-root = "src/fib.zig"
+name = "sandbox._lib"
+root = "src/sandbox.zig"
